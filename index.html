@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apple (O'zbekiston) - Klon</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+    <!-- Sticky Glassmorphism Navbar -->
+    <header class="navbar">
+        <nav class="nav-container">
+            <a href="#" class="logo" aria-label="Apple"></a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#products">Do'kon</a></li>
+                <li><a href="#macbook">Mac</a></li>
+                <li><a href="#products">iPad</a></li>
+                <li><a href="#iphone">iPhone</a></li>
+                <li><a href="#products">Watch</a></li>
+                <li><a href="#products">AirPods</a></li>
+                <li><a href="#products">Vision</a></li>
+                <li><a href="#footer">Qo'llab-quvvatlash</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button id="searchToggle" class="icon-btn" aria-label="Qidirish">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                </button>
+                <button id="cartToggle" class="icon-btn cart-btn" aria-label="Savat">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                    <span id="cartBadge" class="badge hidden">0</span>
+                </button>
+                <button id="mobileMenuToggle" class="icon-btn mobile-only" aria-label="Menyu">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Mobil menyu -->
+        <div id="mobileMenu" class="dropdown-panel mobile-menu hidden">
+            <a href="#products" class="mobile-link">Do'kon</a>
+            <a href="#macbook" class="mobile-link">Mac</a>
+            <a href="#products" class="mobile-link">iPad</a>
+            <a href="#iphone" class="mobile-link">iPhone</a>
+            <a href="#products" class="mobile-link">Watch</a>
+            <a href="#products" class="mobile-link">AirPods</a>
+            <a href="#products" class="mobile-link">Vision</a>
+        </div>
+
+        <!-- Jonli Qidiruv Paneli -->
+        <div id="searchPanel" class="dropdown-panel search-panel hidden">
+            <div class="panel-inner">
+                <div class="search-input-wrap">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#86868b" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                    <input type="text" id="searchInput" placeholder="apple.com saytidan qidirish..." autocomplete="off">
+                    <button id="closeSearch" class="close-panel-btn">✕</button>
+                </div>
+                <div class="search-results">
+                    <p class="panel-label">TEZKOR HAVOLALAR</p>
+                    <div id="searchResultsList"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Savat (Bag) Paneli -->
+        <div id="cartPanel" class="dropdown-panel cart-panel hidden">
+            <div class="panel-inner">
+                <div class="cart-header">
+                    <h3>Sizning savatingiz</h3>
+                    <button id="closeCart" class="close-panel-btn dark-close">✕</button>
+                </div>
+                <div id="cartItemsContainer" class="cart-items"></div>
+                <div id="cartFooter" class="cart-footer hidden">
+                    <div>
+                        <span class="total-label">Jami summa:</span>
+                        <span id="cartTotalPrice" class="total-amount">$0</span>
+                    </div>
+                    <button id="checkoutBtn" class="btn btn-primary">Buyurtma berish</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Asosiy Kontent -->
+    <main>
+        <!-- Hero 1: iPhone 17 Pro -->
+        <section id="iphone" class="hero dark-theme">
+            <div class="hero-content">
+                <h1>iPhone 17 Pro</h1>
+                <p class="subtitle">Titan. Kuchli. Yengil. Pro.</p>
+                <p class="price-tag">$1199 dan</p>
+                <div class="cta-group">
+                    <button class="btn btn-primary" onclick="openProductModal(1)">Batafsil</button>
+                    <button class="btn btn-outline-light" onclick="quickBuy(1)">Sotib olish</button>
+                </div>
+            </div>
+            <div class="device-mockup iphone-mockup" onclick="openProductModal(1)">
+                <div class="dynamic-island"></div>
+                <div class="screen-glow"></div>
+            </div>
+        </section>
+
+        <!-- Hero 2: MacBook Air -->
+        <section id="macbook" class="hero light-theme">
+            <div class="hero-content">
+                <h1>MacBook Air</h1>
+                <p class="subtitle">M4 chipi bilan yanada tezkor.</p>
+                <p class="price-tag">$1099 dan</p>
+                <div class="cta-group">
+                    <button class="btn btn-primary" onclick="openProductModal(2)">Batafsil</button>
+                    <button class="btn btn-outline-dark" onclick="quickBuy(2)">Sotib olish</button>
+                </div>
+            </div>
+            <div class="device-mockup macbook-mockup" onclick="openProductModal(2)">
+                <div class="macbook-screen"></div>
+                <div class="macbook-base"></div>
+            </div>
+        </section>
+
+        <!-- 2 ustunli Grid Bo'limi -->
+        <section id="products" class="grid-section">
+            <!-- Apple Watch -->
+            <div class="grid-card dark-theme">
+                <div class="card-content">
+                    <h2>Apple Watch Series 11</h2>
+                    <p>Aqlliroq. Yorqinroq. Kuchliroq.</p>
+                    <div class="card-links">
+                        <button class="link-btn blue-light" onclick="openProductModal(3)">Batafsil &gt;</button>
+                        <button class="link-btn blue-light" onclick="quickBuy(3)">Sotib olish ($399) &gt;</button>
+                    </div>
+                </div>
+                <div class="card-mockup watch-mockup" onclick="openProductModal(3)">
+                    <div class="watch-ring"></div>
+                </div>
+            </div>
+
+            <!-- iPad Pro -->
+            <div class="grid-card light-theme">
+                <div class="card-content">
+                    <h2>iPad Pro</h2>
+                    <p>Aql bovar qilmas darajada yupqa.</p>
+                    <div class="card-links">
+                        <button class="link-btn blue-dark" onclick="openProductModal(4)">Batafsil &gt;</button>
+                        <button class="link-btn blue-dark" onclick="quickBuy(4)">Sotib olish ($999) &gt;</button>
+                    </div>
+                </div>
+                <div class="card-mockup ipad-mockup" onclick="openProductModal(4)"></div>
+            </div>
+
+            <!-- AirPods Pro 3 -->
+            <div class="grid-card dark-theme">
+                <div class="card-content">
+                    <h2>AirPods Pro 3</h2>
+                    <p>Shovqinni bekor qilishning yangi darajasi.</p>
+                    <div class="card-links">
+                        <button class="link-btn blue-light" onclick="openProductModal(5)">Batafsil &gt;</button>
+                        <button class="link-btn blue-light" onclick="quickBuy(5)">Sotib olish ($249) &gt;</button>
+                    </div>
+                </div>
+                <div class="card-mockup airpods-mockup" onclick="openProductModal(5)">
+                    <div class="airpods-led"></div>
+                </div>
+            </div>
+
+            <!-- Apple Vision Pro -->
+            <div class="grid-card light-theme">
+                <div class="card-content">
+                    <h2>Apple Vision Pro</h2>
+                    <p>Fazoviy hisoblash davriga xush kelibsiz.</p>
+                    <div class="card-links">
+                        <button class="link-btn blue-dark" onclick="openProductModal(6)">Batafsil &gt;</button>
+                        <button class="link-btn blue-dark" onclick="quickBuy(6)">Sotib olish ($3499) &gt;</button>
+                    </div>
+                </div>
+                <div class="card-mockup vision-mockup" onclick="openProductModal(6)"></div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Mahsulot Konfiguratsiyasi Modal Oynasi -->
+    <div id="productModal" class="modal-overlay hidden">
+        <div class="modal-box">
+            <button id="closeModal" class="modal-close">✕</button>
+            <h3 id="modalTitle" class="modal-title">Mahsulot nomi</h3>
+            <p id="modalSpecs" class="modal-specs">Texnik xususiyatlar</p>
+
+            <div class="modal-section">
+                <p class="modal-label">Rangni tanlang: <strong id="selectedColorName">-</strong></p>
+                <div id="colorOptions" class="color-options"></div>
+            </div>
+
+            <div class="modal-section">
+                <p class="modal-label">Xotira / Variant:</p>
+                <div id="storageOptions" class="storage-options"></div>
+            </div>
+
+            <div class="modal-footer">
+                <div>
+                    <span class="total-label">Yakuniy narx:</span>
+                    <div id="modalFinalPrice" class="modal-price">$0</div>
+                </div>
+                <button id="modalAddToCartBtn" class="btn btn-primary btn-lg">Savatga qo'shish</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bildirishnoma (Toast) -->
+    <div id="toast" class="toast hidden">Mahsulot savatga qo'shildi</div>
+
+    <!-- Footer -->
+    <footer id="footer" class="footer">
+        <div class="footer-container">
+            <p class="footer-note">
+                * Ushbu sahifa sof HTML, CSS va JavaScript yordamida o'quv va dizayn maqsadida yaratilgan Apple veb-sayti klonidir.
+            </p>
+            <hr>
+            <div class="footer-bottom">
+                <p>Mualliflik huquqi © 2026 Apple Klon. Barcha huquqlar himoyalangan.</p>
+                <div class="footer-links">
+                    <a href="#">Maxfiylik siyosati</a>
+                    <a href="#">Foydalanish shartlari</a>
+                    <a href="#">Savdo va qaytarish</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="./script.js"></script>
+</body>
+</html>
